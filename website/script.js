@@ -1,14 +1,22 @@
 const cmdInput = document.getElementById('cmd-input');
 const cmdOutput = document.getElementById('cmd-output');
 const cardsContainer = document.getElementById('cards-container');
+const overlay = document.getElementById('overlay');
+const cardFullContent = document.getElementById('card-full-content');
+const closeCardBtn = document.getElementById('close-card-btn');
 
 let openCards = {};
+let currentCard = null;
 
 cmdInput.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') {
         handleCommand(cmdInput.value);
         cmdInput.value = ''; // clear input field
     }
+});
+
+closeCardBtn.addEventListener('click', () => {
+    closeOverlay();
 });
 
 function handleCommand(command) {
@@ -54,6 +62,7 @@ function createCard(filename) {
     const card = document.createElement('div');
     card.classList.add('card');
     card.id = filename;
+    card.onclick = () => openCard(filename); // open on click
 
     const cardTitle = document.createElement('div');
     cardTitle.classList.add('card-title');
@@ -77,8 +86,11 @@ function openCard(filename) {
         return;
     }
 
-    openCards[filename].card.style.display = 'block';
-    displayOutput(`Card ${filename} opened.`);
+    // Hide homepage cards and show the overlay with the card content
+    cardsContainer.style.display = 'none';
+    overlay.style.display = 'flex';
+    currentCard = openCards[filename];
+    cardFullContent.textContent = currentCard.content.textContent;
 }
 
 function writeToCard(filename, content) {
@@ -87,7 +99,8 @@ function writeToCard(filename, content) {
         return;
     }
 
-    openCards[filename].content.textContent += content + '\n';
+    currentCard.content.textContent += content + '\n';
+    cardFullContent.textContent = currentCard.content.textContent;
     displayOutput(`Written to card ${filename}.`);
 }
 
@@ -97,7 +110,8 @@ function truncateCard(filename) {
         return;
     }
 
-    openCards[filename].content.textContent = '';
+    currentCard.content.textContent = '';
+    cardFullContent.textContent = '';
     displayOutput(`Card ${filename} content truncated.`);
 }
 
@@ -107,8 +121,14 @@ function closeCard(filename) {
         return;
     }
 
-    openCards[filename].card.style.display = 'none';
-    displayOutput(`Card ${filename} closed.`);
+    // Return to homepage with cards visible
+    closeOverlay();
+}
+
+function closeOverlay() {
+    overlay.style.display = 'none';
+    cardsContainer.style.display = 'flex';
+    cardFullContent.textContent = '';
 }
 
 function removeCard(filename) {
