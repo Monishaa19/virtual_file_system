@@ -2,8 +2,8 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #1e1e1e;
-    color: #fff;
+    background-color: #edede9;
+    color: #000;
 }
 
 .container {
@@ -21,17 +21,19 @@ body {
 }
 
 .card {
-    background-color: #333;
+    background-color: #bde0fe;
     padding: 10px;
     border-radius: 5px;
-    width: 200px;
-    min-height: 100px;
+    width: 250px;
+    min-height: 150px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     overflow: hidden;
     position: relative;
     cursor: pointer;
+    border-color: #000;
+
 }
 
 .card-title {
@@ -43,10 +45,12 @@ body {
     font-size: 14px;
     white-space: pre-wrap;
     word-wrap: break-word;
+    color:  rgba(0, 0, 0, 0.267);
+    background-color: #bde0fe;
 }
 
 .cmd-container {
-    background-color: #222;
+    background-color: #edede9;
     width: 100%;
     max-width: 800px;
     padding: 10px;
@@ -54,6 +58,9 @@ body {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    height:50vh;
+    position:fixed;
+    top:500px;
 }
 
 .cmd-input {
@@ -67,7 +74,7 @@ body {
 }
 
 .cmd-input:focus {
-    border-color: #00ff00;
+    border-color: #000;
 }
 
 /* Overlay for opened card */
@@ -78,7 +85,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: #edede9;
     justify-content: center;
     align-items: center;
     flex-direction: column;
@@ -86,18 +93,20 @@ body {
 }
 
 .overlay-content {
-    background-color: #333;
+    background-color: #fff;
     padding: 20px;
     border-radius: 5px;
+    border-color: #000;
     width: 80%;
-    max-width: 600px;
+    max-width: 400px;
     max-height: 80%;
     overflow-y: auto;
+    overflow-x: auto;
 }
 
 .close-card-btn {
-    background-color: #444;
-    color: #fff;
+    background-color: #f5f3f3;
+    color: #000;
     border: none;
     padding: 10px;
     margin-bottom: 10px;

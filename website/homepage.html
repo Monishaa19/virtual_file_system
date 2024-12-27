@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body{
+            background-color: #edede9;
+            
+        }
+
+        .navbar-brand{
+            font-size: 1.5rem;
+        }
+        .nav-item{
+            font-size: 1.2rem;
+        }
+
+        nav{
+            height:80px;
+        }
+
+        .container{
+            max-height: 40vh !important;
+            overflow: hidden;  
+        }
+
+
+        .col img{
+            width: 100%;
+            height:50vh;
+            padding:1rem;
+            object-fit: contain;
+        }
+
+        .row {
+            height: 100%; /* Ensure the row occupies the full container height */
+            display: flex;
+            align-items: center;
+        }
+
+        .col {
+            flex: 1; /* Ensure equal spacing for columns */
+            overflow-y: auto; /* Add scrolling if text overflows */
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-size: 1.2rem;
+         }
+
+        footer{
+            position:relative;
+            top:100px;
+        }
+        footer div{
+            height: 30vh;
+            
+        }
+
+        footer .col{
+            
+            align-content: end;
+            background-color: rgba(0, 0, 0, 0.034);
+            font-size: 1.7rem;
+        }
+        
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary ">
+            <div class="container-fluid ms-3 me-3">
+
+                <a class="navbar-brand" href="#">
+                    <i class="fa-solid fa-book"></i>
+                  </a>
+
+              <a class="navbar-brand h3 mb-0" href="#">FileBook</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+
+
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                  </li>
+                  <li class="nav-item ">
+                    <a class="nav-link" href="index.html">Main</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Help</a>
+                  </li>
+                  
+                </ul>
+                <form class="d-flex" role="search">
+                  <button class="btn btn-outline-secondary" type="submit" >Login</button>
+                  &nbsp;
+                  <button class="btn btn-outline-secondary" type="submit">Sign Up</button>
+                </form>
+              </div>
+            </div>
+          </nav>
+    </header>
+
+    <main>
+    <div class="container text-center mt-3">
+        <div class="row align-items-start">
+          <div class="col">
+            A Virtual File System (VFS) acts as an abstraction layer on top of a physical file system, enabling applications to access files in a consistent and standardized manner regardless of the underlying file system. VFS provides a unified interface to manage different file systems like FAT, NTFS, ext4, or even network file systems such as NFS or SMB. By masking the complexities of physical storage, it allows seamless file operations across multiple devices or environments without requiring changes to application logic. This abstraction is particularly valuable for operating systems, as it ensures compatibility and extensibility for diverse storage technologies.
+
+            Moreover, VFS simplifies system-level tasks such as mounting and accessing external drives or remote storage by treating them as part of a single, logical directory hierarchy. It is widely used in modern operating systems to enhance flexibility, portability, and performance while supporting security measures like access controls and encryption.
+          </div>
+          <div class="col">
+            <img src="filebook.webp" alt="">
+          </div>
+          
+        </div>
+      </div>
+    </main>
+
+
+        <footer>
+            <div class="container text-center">
+                <div class="row align-items-end ">
+                  <div class="col mx-3  ">
+                    Create a file
+                  </div>
+                  <div class="col mx-3 ">
+                    Edit the file
+                  </div>
+                  <div class="col mx-3">
+                    Delete the file
+                  </div>
+                </div>
+              </div>
+        </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
