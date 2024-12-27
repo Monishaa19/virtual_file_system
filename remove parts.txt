@@ -1,0 +1,89 @@
+int fstat_file(int fd)
+{
+    PINODE temp = head;
+    int i = 0;
+
+    if (fd < 0)
+        return -1;
+
+    if (UFDTArr[fd].ptrfiletable == NULL)
+        return -2;
+
+    temp = UFDTArr[fd].ptrfiletable->ptrinode;
+
+    printf("\n--------Statistical Information about file-----------\n");
+    printf("File name : %s\n", temp->FileName);
+    printf("Inode Number : %d\n", temp->InodeNumber);
+    printf("File Size : %d\n", temp->FileSize);
+    printf("Actual File size : %d\n", temp->FileActualSize);
+    printf("Link count : %d\n", temp->LinkCount);
+    printf("Refrence count : %d\n", temp->ReferenceCount);
+
+    if (temp->permission == 1)
+        printf("File Permission : Read Only\n");
+    else if (temp->permission == 2)
+        printf("File Permission : Write\n");
+    else if (temp->permission == 3)
+        printf("File Permission : Read & Write\n");
+    printf("--------------------------------------------------------\n\n");
+
+    return 0;
+}
+
+void CloseAllFile()
+{
+    int i = 0;
+    while (i < 50)
+    {
+        if (UFDTArr[i].ptrfiletable != NULL)
+        {
+            UFDTArr[i].ptrfiletable->readoffset = 0;
+            UFDTArr[i].ptrfiletable->writeoffset = 0;
+            (UFDTArr[i].ptrfiletable->ptrinode->ReferenceCount)--;
+            break;
+        }
+        i++;
+    }
+}
+
+void CloseFileByFD(int fd)
+{
+    UFDTArr[fd].ptrfiletable->readoffset = 0;
+    UFDTArr[fd].ptrfiletable->writeoffset = 0;
+    (UFDTArr[fd].ptrfiletable->ptrinode->ReferenceCount)--;
+}
+
+int GetFDFromName(char *name)
+{
+    int i = 0;
+
+    while (i < 50)
+    {
+        if (UFDTArr[i].ptrfiletable != NULL)
+            if (strcmp((UFDTArr[i].ptrfiletable->ptrinode->FileName), name) == 0)
+                break;
+        i++;
+    }
+
+    if (i == 50)
+        return -1;
+    else
+        return i;
+}
+
+PINODE Get_Inode(char *name)
+{
+    PINODE temp = head;
+    int i = 0;
+
+    if (name == NULL)
+        return NULL;
+
+    while (temp != NULL)
+    {
+        if (strcmp(name, temp->FileName) == 0)
+            break;
+        temp = temp->next;
+    }
+    return temp;
+}
